@@ -1,0 +1,25 @@
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <%= form_for(@micropost) do |f| %>
+        <div class="form-group">
+          <%= f.text_area :content, class: 'form-control', rows: 5 %>
+        </div>
+        <%= f.submit 'Post/投稿', class: 'btn btn-primary btn-block' %>
+      <% end %>
+    </aside>
+    <div class="col-xs-8">
+      <%= render 'microposts/microposts', microposts: @microposts %>
+    </div>
+  </div>
+<% else %>
+<div class="center jumbotron">
+  <div class="text-center">
+    <h1>Welcome to the Microposts</h1>
+    <%= link_to '今すぐご登録を!', signup_path, class: 'btn-lg btn-primary' %>
+  </div>
+</div>  
+<div class="text-center"> 
+    <p>あなたもmicropostsのある生活を</p>
+</div>
+<% end %>
